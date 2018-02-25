@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="default" namespace="/" extends="struts-default">
+		<default-action-ref name="index"></default-action-ref>
+		<action name="index" class="org.sid.web.HomeAction" method="index">
+			<result name="success">index.jsp</result>
+		</action>
+		<action name="delete" class="org.sid.web.AdherentAction"
+			method="delete">
+			<result name="redirect" type="redirect">${/}</result>
+		</action>
+		<action name="adherents" class="org.sid.web.AdherentAction"
+			method="adherents">
+			<result name="success">adherents.jsp</result>
+		</action>
+
+		<action name="profil" class="org.sid.web.AdherentAction"
+			method="profil">
+			<result name="success">profil.jsp</result>
+		</action>
+		
+		<action name="retard" class="org.sid.web.HomeAction"
+			method="retard">
+			<result name="success">retard.jsp</result>
+		</action>
+		<action name="login" class="org.sid.web.AuthentificationAction"
+			method="login">
+			<result name="success">index.jsp</result>
+		</action>
+
+		<action name="deleteReservation" class="org.sid.web.HomeAction" method="deleteReservation">
+				<result name="success"  type="redirect">${/}</result>
+		</action>
+		
+	</package>
+</struts>
