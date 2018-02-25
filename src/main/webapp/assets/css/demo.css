@@ -206,3 +206,9 @@ h6 {
 #pswd_info {
     display:none;
 }
+.authen{
+	margin-top: 11%;
+    border-right: 1px #08080830 solid;
+    -webkit-border-start: blue;
+    margin-right: 2%;
+}
