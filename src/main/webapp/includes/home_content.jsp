@@ -4,7 +4,7 @@
 			<div class="header">
 			<div class="row">
 				<div class="col-md-2" style="width: 4.666667%;">
-				<button title="Enregistrer une reservation" type="button" class="btn btn-info btn-xs btn-fill" ><i class="ti-plus"></i></button>
+				<button title="Enregistrer une reservation" type="button" class="btn btn-info btn-xs btn-fill" data-toggle="modal" id="modalup" data-target="#myModal" ><i class="ti-plus"></i></button>
 				
 				</div>
 				<div class="col-md-4">
@@ -183,6 +183,27 @@
 	
 	
 	
+</div>
+
+
+<div id="myModal" class="modal fade" role="dialog" >
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>dir li bghitti hnna</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
 </div>
 </div>
 	</div>
