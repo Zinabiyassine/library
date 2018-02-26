@@ -20,17 +20,18 @@
 				</form>
 			</div>
 		</div>
+		
 		<div class="col-md-6 register ">
 			<div class="search-box">
 				<div class="caption">
 					<h3>Inscription</h3>
 				</div>
-				<form action="index" method="post" class="loginForm">
+				<form action="addAdherent" method="post" class="loginForm">
 					<div class="row">
 						<div class="col-md-3">
 							<div class="form-group">
 								<label>Civilité</label> <select class="form-control"
-									id="exampleFormControlSelect1">
+									name ="sexe" id="exampleFormControlSelect1">
 									<option></option>
 									<option>Femme</option>
 									<option>Homme</option>

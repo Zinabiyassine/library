@@ -14,4 +14,5 @@ public interface IAdherentMetier {
 	  public int statAdherent();
 	  public  List<Adherent> getAll();
 	  public String PathPhoto(Long id);
+	  public Adherent getAdherentByEmail(String idObj);
 }

@@ -42,7 +42,20 @@ public class Adherent implements Serializable{
 	//@Where(clause="retard=true")
 	//private List<Reservation> retards;*/
 	private Date finAbonnement;
-	
+		
+	public Adherent(String email, String nom, String prenom, String adresse, String mdp, String sexe, String telephone,
+			String photo) {
+		super();
+		this.email = email;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresse = adresse;
+		this.mdp = mdp;
+		this.sexe = sexe;
+		this.telephone = telephone;
+		this.photo = photo;
+	}
+
 	public Adherent(String nom, String prenom, String adresse, String email,
 			String mdp, String sexe, String telephone, Date dateNaissance,
 			Date finAbonnement) {

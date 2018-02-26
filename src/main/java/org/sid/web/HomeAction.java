@@ -1,5 +1,7 @@
 package org.sid.web;
 
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.sid.entities.Adherent;
@@ -34,6 +36,18 @@ public class HomeAction extends ActionSupport{
 	public List<Livre> derniersLivre;
 	public List<Adherent> derniersAdherent;
 	public List<Livre> derniersReservation;
+	
+	
+	//authentification adherent
+	public String nom;
+	public String prenom;
+	public Date naissance;
+	public String email;
+	public String password;
+	public String telephone;
+	public String photo;
+	public String sexe;
+	
 	
 	
 	//state 
@@ -84,6 +98,14 @@ public class HomeAction extends ActionSupport{
 	public String retard(){
 		this.pagetitle="retard";
 		return SUCCESS;
+	}
+	public String addAdherent() {
+		Adherent a=new Adherent(email, nom, prenom, null, password, sexe, telephone, photo);
+		a.setDateInscription(new java.util.Date());
+	if(iadherentMetier.getAdherentByEmail(email)==null) {
+		iadherentMetier.addAdherent(a);
+		return SUCCESS;}
+	else return ERROR;
 	}
 
 

@@ -34,6 +34,10 @@
 		<action name="deleteReservation" class="org.sid.web.HomeAction" method="deleteReservation">
 				<result name="success"  type="redirect">${/}</result>
 		</action>
+		<action name="addAdherent" class="org.sid.web.HomeAction" method="addAdherent">
+				<result name="success"  type="redirect">index.jsp</result>
+				<result name="error"  type="redirect">login.jsp</result>
+		</action>
 		
 	</package>
 </struts>

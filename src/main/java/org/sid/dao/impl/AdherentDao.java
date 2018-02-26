@@ -3,6 +3,7 @@ package org.sid.dao.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -15,15 +16,16 @@ import org.springframework.transaction.annotation.Transactional;
 public class AdherentDao implements IAdherentDao {
 
 	@PersistenceContext
-	protected EntityManager em,em1;
+	protected EntityManager em;
 	@Transactional
 	public Adherent addAdherent(Adherent obj) {
-		if (obj != null && true == this.NotExiste(obj.getEmail())) {
+		if (obj != null ) {
 			em.persist(obj);
-			if (!this.NotExiste(obj.getEmail())) {
+			return obj;
+		/*	if (!this.NotExiste(obj.getEmail())) {
 				return this.getAdherentByEmail(obj.getEmail());
 			}
-			return null;
+			return null;*/
 		} else
 			return null;
 	}
@@ -58,13 +60,16 @@ public class AdherentDao implements IAdherentDao {
 	}
 @Transactional
 	public Adherent getAdherentByEmail(String idObj) {
+	try {
 		Query q = em.createQuery("select a from Adherent a where a.email=:x");
 		q.setParameter("x", idObj);
 		Adherent a = (Adherent) q.getSingleResult();
-		if (a != null) {
+		
 			return a;
 		}
+	catch (NoResultException nre){
 		return null;
+	}
 	}
 @Transactional
 	public void DeleteAll() {

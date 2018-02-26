@@ -64,6 +64,11 @@ public class AdherentMetierImpl implements IAdherentMetier{
 		// TODO Auto-generated method stub
 		return dao.PathPhoto(id);
 	}
+	@Override
+	public Adherent getAdherentByEmail(String idObj) {
+		
+		return dao.getAdherentByEmail(idObj);
+	}
 	
 	
 
