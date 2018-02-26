@@ -196,11 +196,16 @@
         <h4 class="modal-title">Modal Header</h4>
       </div>
       <div class="modal-body">
-        <p>dir li bghitti hnna</p>
+      <form action="addReservation" method="post" class="loginForm">
+        <p> entrez le code du livre que vous voulez reserver</p>
+         <label>ISBN Livre</label> <input type="text" name="isbn" class="form-control border-input"  />
+         
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+         <button type="submit" class="btn btn-primary  btn-fill">Confirmer</button>
       </div>
+      </form>
     </div>
 
   </div>

@@ -3,7 +3,9 @@ package org.sid.web;
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.struts2.interceptor.SessionAware;
 import org.sid.entities.Adherent;
 import org.sid.entities.Keyclass;
 import org.sid.entities.Livre;
@@ -17,7 +19,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class HomeAction extends ActionSupport{
+public class HomeAction extends ActionSupport implements SessionAware{
 	ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 	IReservationMetier iReservationMetier=(IReservationMetier) ctx.getBean("reservationMetierImpl");
 	IAdherentMetier iadherentMetier = (IAdherentMetier) ctx.getBean("adherentMetierImpl");
@@ -25,8 +27,17 @@ public class HomeAction extends ActionSupport{
 
 	public long keyL;
 	public Long keyA;
-	
 	public Keyclass k;
+	//livre
+	public long isbn;
+	
+	
+	
+	//SESSION
+	private Map<String, Object> session;
+	
+	
+	
 	//table
 	public List<Livre> allLivre;
 	public List<Adherent> allAdherent;
@@ -61,9 +72,15 @@ public class HomeAction extends ActionSupport{
 	public int allAdherents,allLivres;
 	public int reservations;
 	public String pagetitle;
+	
 
 	
 	public String index(){
+		Adherent t=iadherentMetier.getAdherentByEmail(email);
+		/*session.put("id", t.getId());
+		session.put("email", email);*/
+		
+		System.out.println("hada test diali"+(long)session.get("id"));
 		this.allAdherent=iadherentMetier.getAll();
 		this.allLivre=iLivreMetier.getAll();
 		this.allLivres=this.allLivre.size();
@@ -84,14 +101,8 @@ public class HomeAction extends ActionSupport{
 	public String deleteReservation() {
 		k=new Keyclass(keyA, keyL);
 		iReservationMetier.deleteReservation(k);
-		System.out.println("DAZT!!!!!!!!!!!!!!!!!!!!!!");
-		System.out.println(k);
-		System.out.println(keyA);
-		System.out.println(keyL);
+		
 		return SUCCESS;
-	}
-	public String addReservation() {
-		return null;
 	}
 	
 	
@@ -100,7 +111,7 @@ public class HomeAction extends ActionSupport{
 		return SUCCESS;
 	}
 	public String addAdherent() {
-		Adherent a=new Adherent(email, nom, prenom, null, password, sexe, telephone, photo);
+		Adherent a=new Adherent(email, nom, prenom, null, password, sexe, telephone, photo,true);
 		a.setDateInscription(new java.util.Date());
 	if(iadherentMetier.getAdherentByEmail(email)==null) {
 		iadherentMetier.addAdherent(a);
@@ -108,6 +119,33 @@ public class HomeAction extends ActionSupport{
 	else return ERROR;
 	}
 
+	public String addReservation() {
+		if(session.get("id")!=null) {
+		Reservation r=new Reservation();
+		Keyclass p=new Keyclass();
+		p.setIdLivre(isbn);
+		System.out.println("test 2 eyey!"+session.get("id"));
+		p.setIdAdherent((long)session.get("id"));
+		
+		r.setKey(p);
+		iReservationMetier.addReservation(r);
+		return SUCCESS;
+		}
+		else return ERROR;
+		
+		
+		
+		
+	}
+	
+	
+	
+	//SESSION
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session=session;
+		
+	}
 
 	
 

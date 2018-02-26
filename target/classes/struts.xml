@@ -28,14 +28,18 @@
 		</action>
 		<action name="login" class="org.sid.web.AuthentificationAction"
 			method="login">
-			<result name="success">index.jsp</result>
+			<result name="success">index</result>
 		</action>
 
 		<action name="deleteReservation" class="org.sid.web.HomeAction" method="deleteReservation">
-				<result name="success"  type="redirect">${/}</result>
+				<result name="success"  type="redirect">index</result>
+		</action>
+		<action name="addReservation" class="org.sid.web.HomeAction" method="addReservation">
+				<result name="success"  type="redirect">index</result>
+				<result name="error"  type="redirect">index</result>
 		</action>
 		<action name="addAdherent" class="org.sid.web.HomeAction" method="addAdherent">
-				<result name="success"  type="redirect">index.jsp</result>
+				<result name="success"  type="redirect">index</result>
 				<result name="error"  type="redirect">login.jsp</result>
 		</action>
 		

@@ -21,10 +21,10 @@ public class ReservationDao implements IReservationDao {
 	
 	@Transactional
 	public void addReservation(Reservation obj) {
-		//if (obj != null && true == this.NotExiste(obj.getKey())) {
+		if (obj != null && true == this.NotExiste(obj.getKey())) {
 			em.persist(obj);
 			
-	//	}
+	}
 	}
 	@Transactional
 	public void deleteReservation(Keyclass id) {

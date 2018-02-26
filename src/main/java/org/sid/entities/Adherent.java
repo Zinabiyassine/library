@@ -44,7 +44,7 @@ public class Adherent implements Serializable{
 	private Date finAbonnement;
 		
 	public Adherent(String email, String nom, String prenom, String adresse, String mdp, String sexe, String telephone,
-			String photo) {
+			String photo,Boolean statut) {
 		super();
 		this.email = email;
 		this.nom = nom;
@@ -54,6 +54,7 @@ public class Adherent implements Serializable{
 		this.sexe = sexe;
 		this.telephone = telephone;
 		this.photo = photo;
+		this.statut=statut;
 	}
 
 	public Adherent(String nom, String prenom, String adresse, String email,
