@@ -76,17 +76,15 @@ public class HomeAction extends ActionSupport implements SessionAware{
 
 	public String login() {
 		Adherent t=iadherentMetier.getAdherentByEmail(email);
-		
 		session.put("id", t.getId());
 		session.put("email", email);
 		session.put("logged",true);
-		System.out.println("YASSINE"+session);
+		session.put("statut",1);
+
 		return SUCCESS;
 	}
 	public String index(){
-		System.out.println(session.get("logged"));
-		System.out.println(session);
-		if(session.containsKey("logged")&& session.get("logged").toString()=="true") {
+		if(session.containsKey("logged")&&(boolean)session.get("logged")) {
 		System.out.println("hada test diali"+(long)session.get("id"));
 		this.allAdherent=iadherentMetier.getAll();
 		this.allLivre=iLivreMetier.getAll();

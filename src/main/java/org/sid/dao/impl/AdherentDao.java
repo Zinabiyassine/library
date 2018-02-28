@@ -91,7 +91,7 @@ public class AdherentDao implements IAdherentDao {
 @Transactional
 	public List<Adherent> getAll() {
 		Query query = em.createQuery("select a from Adherent as a");
-		return query.getResultList();
+		return (List<Adherent>)query.getResultList();
 	}
 
 	public String PathPhoto(Long id) {

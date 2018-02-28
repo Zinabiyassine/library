@@ -6,8 +6,8 @@
 	<package name="default" namespace="/" extends="struts-default">
 		<default-action-ref name="index"></default-action-ref>
 		<action name="index" class="org.sid.web.HomeAction" method="index">
-			<result name="success">index</result>		
-			<result name="redirect"  type="redirect">login</result>
+			<result name="success">index.jsp</result>		
+			<result name="redirect" type="redirect">login.jsp</result>
 			
 		</action>
 		<action name="delete" class="org.sid.web.AdherentAction"
@@ -16,7 +16,7 @@
 		</action>
 		<action name="adherents" class="org.sid.web.AdherentAction"
 			method="adherents">
-			<result name="success">adherents</result>
+			<result name="success">adherents.jsp</result>
 		</action>
 
 		<action name="profil" class="org.sid.web.AdherentAction"

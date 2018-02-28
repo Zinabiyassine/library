@@ -14,6 +14,6 @@ buildNumber.properties
 src/main/resources/spring.xml
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
-
+spring.xml
 
 # End of https://www.gitignore.io/api/maven

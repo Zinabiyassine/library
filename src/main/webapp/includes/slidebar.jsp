@@ -8,25 +8,17 @@
 
 		<ul class="nav">
 			<li class="active"><a href="index"> <i class="ti-home"></i>
-					<p>Tableau de bord</p>
+					<p>Tableau de bord s</p>
 			</a></li>
+			<s:if test="%{#session['statut']==1}">
 
 			<li><a href="adherents"> <i class="ti-shopping-cart"></i>
 					<p>Adherents</p>
 			</a></li>
+			</s:if>
 			<li><a href="livres"> <i class="ti-book"></i>
 					<p>Livres</p>
 			</a></li>
-
-			<li><a href="abonnements"> <i class="ti-money"></i>
-					<p>Abonnements</p>
-			</a></li>
-
-
-			<li><a href="retour"> <i class="ti-control-skip-backward"></i>
-					<p>Retours</p>
-			</a></li>
-
 		</ul>
 	</div>
 </div>
