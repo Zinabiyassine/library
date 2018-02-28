@@ -9,7 +9,7 @@
 				<div class="caption">
 					<h3>Autenetification</h3>
 				</div>
-				<form action="index" method="post" class="loginForm">
+				<form action="login" method="post" class="loginForm">
 					<div class="input-group">
 						<input type="text" id="mail" name="email" class="form-control"
 							placeholder="email ..."> <input type="password" id="paw"

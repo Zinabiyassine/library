@@ -1,7 +1,7 @@
 package org.sid.web;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
+
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +13,7 @@ import org.sid.entities.Reservation;
 import org.sid.metier.IAdherentMetier;
 import org.sid.metier.ILivreMetier;
 import org.sid.metier.IReservationMetier;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -72,14 +72,21 @@ public class HomeAction extends ActionSupport implements SessionAware{
 	public int allAdherents,allLivres;
 	public int reservations;
 	public String pagetitle;
-	
+	public boolean logged;
 
-	
-	public String index(){
+	public String login() {
 		Adherent t=iadherentMetier.getAdherentByEmail(email);
-		/*session.put("id", t.getId());
-		session.put("email", email);*/
 		
+		session.put("id", t.getId());
+		session.put("email", email);
+		session.put("logged",true);
+		System.out.println("YASSINE"+session);
+		return SUCCESS;
+	}
+	public String index(){
+		System.out.println(session.get("logged"));
+		System.out.println(session);
+		if(session.containsKey("logged")&& session.get("logged").toString()=="true") {
 		System.out.println("hada test diali"+(long)session.get("id"));
 		this.allAdherent=iadherentMetier.getAll();
 		this.allLivre=iLivreMetier.getAll();
@@ -95,16 +102,15 @@ public class HomeAction extends ActionSupport implements SessionAware{
 		this.reservations=this.allReservation.size();
 		this.pagetitle="accueil";
 		return SUCCESS;
-		
+		}
+		else return "redirect";
 		
 	}
 	public String deleteReservation() {
 		k=new Keyclass(keyA, keyL);
 		iReservationMetier.deleteReservation(k);
-		
 		return SUCCESS;
 	}
-	
 	
 	public String retard(){
 		this.pagetitle="retard";
@@ -137,8 +143,6 @@ public class HomeAction extends ActionSupport implements SessionAware{
 		
 		
 	}
-	
-	
 	
 	//SESSION
 	@Override
