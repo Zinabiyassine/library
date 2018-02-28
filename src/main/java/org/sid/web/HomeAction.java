@@ -1,7 +1,8 @@
 package org.sid.web;
 
-import java.sql.Date;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -28,9 +29,6 @@ public class HomeAction extends ActionSupport implements SessionAware{
 	public long keyL;
 	public Long keyA;
 	public Keyclass k;
-	//livre
-	public long isbn;
-	
 	
 	
 	//SESSION
@@ -59,7 +57,9 @@ public class HomeAction extends ActionSupport implements SessionAware{
 	public String photo;
 	public String sexe;
 	
-	
+	//addreservation
+	public int codeadherent;
+	public long isbn;
 	
 	//state 
 	public float prcentReservation;
@@ -110,10 +110,10 @@ public class HomeAction extends ActionSupport implements SessionAware{
 		return SUCCESS;
 	}
 	
-	public String retard(){
-		this.pagetitle="retard";
-		return SUCCESS;
-	}
+	
+	
+	
+	
 	public String addAdherent() {
 		Adherent a=new Adherent(email, nom, prenom, null, password, sexe, telephone, photo,true);
 		a.setDateInscription(new java.util.Date());
@@ -122,11 +122,17 @@ public class HomeAction extends ActionSupport implements SessionAware{
 		return SUCCESS;}
 	else return ERROR;
 	}
-
 	public String addReservation() {
-		if(session.get("id")!=null) {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		cal.add(Calendar.DATE, 90);
+		if(iadherentMetier.getAdherentById((long)codeadherent)!=null) {
+			if(iLivreMetier.getLivreById(isbn)!=null) {
 		Reservation r=new Reservation();
+		r.setDateReservation(new Date());
+		r.setDateLimite(cal.getTime());
 		Keyclass p=new Keyclass();
+		
 		p.setIdLivre(isbn);
 		System.out.println("abdel");
 		p.setIdAdherent((long)session.get("id"));
@@ -135,7 +141,11 @@ public class HomeAction extends ActionSupport implements SessionAware{
 		iReservationMetier.addReservation(r);
 		return SUCCESS;
 		}
+			return ERROR;
+			}
+		
 		else return ERROR;
+		
 		
 		
 		

@@ -198,6 +198,7 @@
       <div class="modal-body">
       <form action="addReservation" method="post" class="loginForm">
         <p> entrez le code du livre que vous voulez reserver</p>
+        <label>code adherent</label> <input type="number" name="codeadherent" class="form-control border-input"  />
          <label>ISBN Livre</label> <input type="text" name="isbn" class="form-control border-input"  />
          
       </div>
