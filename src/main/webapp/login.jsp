@@ -33,8 +33,8 @@
 								<label>Civilité</label> <select class="form-control"
 									name ="sexe" id="exampleFormControlSelect1">
 									<option></option>
-									<option>Femme</option>
-									<option>Homme</option>
+									<option>F</option>
+									<option>H</option>
 								</select>
 							</div>
 						</div>
