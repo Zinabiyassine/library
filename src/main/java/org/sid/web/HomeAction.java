@@ -130,7 +130,7 @@ public class HomeAction extends ActionSupport implements SessionAware{
 		Reservation r=new Reservation();
 		Keyclass p=new Keyclass();
 		p.setIdLivre(isbn);
-		System.out.println("test 2 eyey!"+session.get("id"));
+		
 		p.setIdAdherent((long)session.get("id"));
 		
 		r.setKey(p);
