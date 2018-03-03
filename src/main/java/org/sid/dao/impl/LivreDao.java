@@ -31,7 +31,7 @@ public class LivreDao implements IlivreDao {
 
 	@Transactional
 	public void deleteLivre(Long obj) {
-		// TODO Auto-generated method stub
+		em.remove(this.getLivreById(obj));
 		
 	}
 
@@ -43,6 +43,7 @@ public class LivreDao implements IlivreDao {
 
 	@Transactional
 	public Livre getLivreById(Long idObj) {
+		System.out.println("isbn dao : "+idObj);
 		Livre a = em.find(Livre.class, idObj);
 		if (a != null) {
 			return a;

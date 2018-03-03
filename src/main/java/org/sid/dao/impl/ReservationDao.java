@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.sid.dao.IReservationDao;
+import org.sid.entities.Adherent;
 import org.sid.entities.Keyclass;
 import org.sid.entities.Livre;
 import org.sid.entities.Reservation;
@@ -48,6 +49,12 @@ public class ReservationDao implements IReservationDao {
 		return em.createQuery("select r from Reservation as r").getResultList();
 	}
 	@Transactional
+
+	public List<Reservation> getAll(long id) {
+		
+		return em.createQuery("select r from Reservation as r where adherent="+id).getResultList();
+	}
+	@Transactional
 	public boolean NotExiste(Keyclass k) {
 		Query q = em.createQuery("select a from Reservation a where a.key=:x");
 		q.setParameter("x",k);
@@ -66,6 +73,16 @@ public class ReservationDao implements IReservationDao {
 		}
 		return null;
 		
+	}
+	@Override
+	public List<Reservation> getRetardByAdherent(long id) {
+		return em.createQuery("select r from Reservation as r where dateLimite<CURDATE() and fk_adherent="+id).getResultList();
+
+	}
+	@Transactional
+	public void updateRese(Reservation res) {
+		System.out.println("dao class "+res);
+			em.merge(res);
 	}
 	
 

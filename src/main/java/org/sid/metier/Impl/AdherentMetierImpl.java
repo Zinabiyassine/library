@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.sid.dao.IAdherentDao;
 import org.sid.entities.Adherent;
+import org.sid.entities.Livre;
 import org.sid.metier.IAdherentMetier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,7 @@ public class AdherentMetierImpl implements IAdherentMetier{
 
 	public Adherent updateAdherent(Adherent obj) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.updateAdherent(obj);
 	}
 
 	public Adherent getAdherentById(Long idObj) {
@@ -68,6 +69,20 @@ public class AdherentMetierImpl implements IAdherentMetier{
 	public Adherent getAdherentByEmail(String idObj) {
 		
 		return dao.getAdherentByEmail(idObj);
+	}
+	@Override
+	public void addFavoris(Livre l, long adherent) {
+		dao.addFavoris(l, adherent);
+		
+	}
+	@Override
+	public List<Livre> getFavoris(long adherent) {
+		// TODO Auto-generated method stub
+		return dao.getFavoris(adherent);
+	}
+	@Override
+	public void deleteFavoris(long adherent, long isbn) {
+		dao.deleteFavoris(adherent, isbn);		
 	}
 	
 	

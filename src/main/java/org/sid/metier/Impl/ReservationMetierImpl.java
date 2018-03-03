@@ -1,10 +1,12 @@
 package org.sid.metier.Impl;
 
 
+import java.util.Date;
 import java.util.List;
 
 import org.sid.dao.IHistoriqueDao;
 import org.sid.dao.IReservationDao;
+import org.sid.entities.Adherent;
 import org.sid.entities.Historique;
 import org.sid.entities.Keyclass;
 import org.sid.entities.Reservation;
@@ -27,7 +29,7 @@ public class ReservationMetierImpl implements IReservationMetier {
 	@Transactional
 	public void deleteReservation(Keyclass id) {
 		Reservation s=dao.getReservationById(id);
-		Historique h=new Historique(s.getKey().getIdLivre(), s.getKey().getIdAdherent(), s.getDateReservation(),s.getDateLimite());   
+		Historique h=new Historique(s.getKey().getIdLivre(), s.getKey().getIdAdherent(), s.getDateReservation(),new Date());   
 		daoh.add(h);
 		dao.deleteReservation(id);
 		
@@ -42,10 +44,25 @@ public class ReservationMetierImpl implements IReservationMetier {
 		
 		return dao.getAll();
 	}
+	
+	@Transactional
+	public List<Reservation> getAll(long a) {
+		
+		return dao.getAll(a);
+	}
 	@Transactional
 	public Reservation getReservationById(Keyclass id) {
 		
 		return dao.getReservationById(id);
+	}
+	@Override
+	public List<Reservation> getRetardByAdherent(long id) {
+		// TODO Auto-generated method stub
+		return dao.getRetardByAdherent(id);
+	}
+	@Override
+	public void updateRese(Reservation res) {
+		dao.updateRese(res);
 	}
 
 }

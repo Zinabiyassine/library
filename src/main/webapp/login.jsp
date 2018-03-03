@@ -13,7 +13,7 @@
 					<div class="input-group">
 						<input type="text" id="mail" name="email" class="form-control"
 							placeholder="email ..."> <input type="password" id="paw"
-							name="pwd" class="form-control" placeholder="mot de passe ...">
+							name="password" class="form-control" placeholder="mot de passe ...">
 						<input type="submit" id="submitValid" disabled
 							class="form-control" value="Valider">
 					</div>

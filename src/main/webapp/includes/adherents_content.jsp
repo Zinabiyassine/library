@@ -54,13 +54,10 @@
 									<td><s:property value="statut"/></td>
 									<td><s:property value="finAbonnement"/></td>
 
-									<s:url namespace="/" action="deleteReservation" var="trash">
+									<s:url namespace="/" action="addReservationbyadherent" var="trash">
 
-										<s:param name="keyA">
-											<s:property value="key.idAdherent" />
-										</s:param>
-										<s:param name="keyL">
-											<s:property value="key.idLivre" />
+										<s:param name="isbn">
+											<s:property value="isbn" />
 										</s:param>
 									</s:url>
 

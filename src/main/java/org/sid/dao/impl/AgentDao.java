@@ -10,8 +10,9 @@ import javax.persistence.Query;
 import org.sid.dao.IAgentDao;
 import org.sid.entities.Adherent;
 import org.sid.entities.Agent;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
+@Repository
 public class AgentDao implements IAgentDao {
 	@PersistenceContext
 	protected EntityManager em;
@@ -25,7 +26,7 @@ public class AgentDao implements IAgentDao {
 	@Override
 	public Agent updateAgent(Agent obj) {
 		
-		return null;
+		return em.merge(obj);
 	}
 	@Transactional
 	@Override

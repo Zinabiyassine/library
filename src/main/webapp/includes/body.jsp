@@ -13,8 +13,8 @@
 		<s:if test="%{pagetitle=='profil'}">
 			<%@ include file="profil_content.jsp"%>
 		</s:if>
-		<s:if test="%{pagetitle=='retard'}">
-			<%@ include file="retard_content.jsp"%>
+		<s:if test="%{pagetitle=='livres'}">
+			<%@ include file="livres_content.jsp"%>
 		</s:if>
 	<%@ include file="signature.jsp"%>
 		

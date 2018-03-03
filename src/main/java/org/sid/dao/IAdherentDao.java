@@ -3,6 +3,7 @@ package org.sid.dao;
 import java.util.List;
 
 import org.sid.entities.Adherent;
+import org.sid.entities.Livre;
 
 public interface IAdherentDao {
 
@@ -17,4 +18,7 @@ public interface IAdherentDao {
 	  public  void DeleteAll();
 	  public  List<Adherent> getAll();
 	  public String PathPhoto(Long id);
+	  public void addFavoris(Livre l,long adherent);
+	  public List<Livre> getFavoris(long adherent);
+	  public void deleteFavoris(long adherent,long isbn);
 }

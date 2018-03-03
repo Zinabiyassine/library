@@ -8,39 +8,33 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.sid.dao.IAdherentDao;
+import org.sid.dao.IlivreDao;
 import org.sid.entities.Adherent;
+import org.sid.entities.Livre;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class AdherentDao implements IAdherentDao {
-
+	IlivreDao livre;
 	@PersistenceContext
 	protected EntityManager em;
+	
 	@Transactional
 	public Adherent addAdherent(Adherent obj) {
-		if (obj != null ) {
+		if(!NotExiste(obj.getEmail())){
 			em.persist(obj);
-			return obj;
-		/*	if (!this.NotExiste(obj.getEmail())) {
-				return this.getAdherentByEmail(obj.getEmail());
-			}
-			return null;*/
-		} else
-			return null;
+			return this.getAdherentByEmail(obj.getEmail());
+		}
+		return null;
 	}
-
-
 
 	@Transactional
 	public void deleteAdherent(Long idobj) {
 		Adherent a = this.getAdherentById(idobj);
 		if (a != null) {
 			 em.remove(a);
-			
-		
-			
-		}
+			 }
 	}
 @Transactional
 	public Adherent updateAdherent(Adherent obj) {
@@ -107,6 +101,39 @@ public class AdherentDao implements IAdherentDao {
 	public void flushclear() {
 		em.flush();
 		em.clear();
+	}
+
+
+
+	@Override
+	public void addFavoris(Livre l,long adherent) {
+			if(this.getAdherentById(adherent)!=null&& l!=null){
+				this.getAdherentById(adherent).getFavoris().add(l);
+			}
+		
+	}
+
+
+
+	@Override
+	public List<Livre> getFavoris(long adherent) {
+		// TODO Auto-generated method stub
+		return this.getAdherentById(adherent).getFavoris();
+	}
+
+
+
+	@Override
+	public void deleteFavoris(long adherent, long isbn) {
+		if(this.getAdherentById(adherent)!=null){
+			if(livre.getLivreById(isbn)!=null){
+				if(this.getAdherentById(adherent).getFavoris().contains(livre.getLivreById(isbn))){
+					this.getAdherentById(adherent).getFavoris().remove(livre.getLivreById(isbn));
+				}
+			}
+			
+		}
+		
 	}
 
 }

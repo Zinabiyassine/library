@@ -4,33 +4,108 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="default" namespace="/" extends="struts-default">
-		<default-action-ref name="index"></default-action-ref>
+		
 		<action name="index" class="org.sid.web.HomeAction" method="index">
 			<result name="success">index.jsp</result>		
 			<result name="redirect" type="redirect">login.jsp</result>
+		</action>
+		
+		<action name="login" class="org.sid.web.HomeAction" method="login">
+			<result name="success" type="redirect">index</result>
+			<result name="index" type="redirect">index</result>
+			<result name="auth">login.jsp</result>
+			
+		</action> 
+		
+		<action name="livres" class="org.sid.web.HomeAction" method="livres">
+			<result name="success">livres.jsp</result>
+			<result name="auth" type="redirect">index</result>
+		</action>
+		
+		<action name="addReservationbyagent" class="org.sid.web.HomeAction" method="addReservation">
+				<result name="success"  type="redirect">index</result>
+				<result name="error"  type="redirect">index</result>
+		</action>
+		
+		<action name="addReservationbyadherent" class="org.sid.web.HomeAction" method="reserver">
+				<result name="success"  type="redirect">livres</result>
+				<result name="error"  type="redirect">index</result>
+		</action>
+		
+		<action name="displaybyadherent" class="org.sid.web.HomeAction" method="livreInfo">
+				<result name="success"/>
+				<result name="*"  type="redirect">index</result>
+				
+		</action>
+		<action name="displayadherent" class="org.sid.web.HomeAction" method="adherentInfo">
+				<result name="success"/>
+				<result name="*"  type="redirect">index</result>
+				
+		</action>
+		<action name="addlivreToFavory" class="org.sid.web.HomeAction" method="favory">
+				<result name="success"  type="redirect">livres</result>
+				<result name="*"  type="redirect">index</result>
+				
+		</action>
+		
+		<action name="addlivreByAgent" class="org.sid.web.HomeAction" method="addlivre">
+				<result name="success"  type="redirect">livres</result>
+				<result name="*"  type="redirect">index</result>
+				
+		</action>
+		
+		<action name="deleteLivre" class="org.sid.web.HomeAction" method="deletelivre">
+				<result name="success"  type="redirect">livres</result>
+				<result name="*"  type="redirect">index</result>
+				
+		</action>
+		
+		<action name="prolongerRes" class="org.sid.web.HomeAction" method="prolonger">
+				<result name="success"  type="redirect">index</result>				
+		</action>
+		
+		<action name="profil" class="org.sid.web.HomeAction"
+			method="profil">
+			<result name="success">profil.jsp</result>
+			<result name="auth" type="redirect">index</result>
+		</action>
+		
+		<action name="deconnexion" class="org.sid.web.HomeAction"
+			method="logout">
+			<result name="success" type="redirect">index</result>
 			
 		</action>
-		<action name="delete" class="org.sid.web.AdherentAction"
-			method="delete">
-			<result name="redirect" type="redirect">${/}</result>
+		
+		<action name="updateProfil" class="org.sid.web.HomeAction"
+			method="updateProfil">
+			<result name="success" type="redirect">profil</result>
+			<result name="*" type="redirect">index</result>
+			
 		</action>
+		
+		<action name="addAdherent" class="org.sid.web.HomeAction" method="addAdherent">
+				<result name="success"  type="redirect">login</result>
+				<result name="*"  type="redirect">login</result>
+		</action>
+							<!-- 		update struts-->
+		
+		
+		
 		<action name="adherents" class="org.sid.web.AdherentAction"
 			method="adherents">
 			<result name="success">adherents.jsp</result>
 		</action>
 
-		<action name="profil" class="org.sid.web.AdherentAction"
+		<action name="profil" class="org.sid.web.HomeAction"
 			method="profil">
-			<result name="success">profil</result>
+			<result name="success">profil.jsp</result>
 		</action>
 		
 		<action name="retard" class="org.sid.web.HomeAction"
 			method="retard">
 			<result name="success">retard</result>
 		</action>
-		<action name="login" class="org.sid.web.HomeAction" method="login">
-			<result name="success" type="redirect">index</result>
-		</action>
+		
 
 		<action name="deleteReservation" class="org.sid.web.HomeAction" method="deleteReservation">
 				<result name="success"  type="redirect">index</result>
@@ -39,10 +114,9 @@
 				<result name="success"  type="redirect">index</result>
 				<result name="error"  type="redirect">index</result>
 		</action>
-		<action name="addAdherent" class="org.sid.web.HomeAction" method="addAdherent">
-				<result name="success"  type="redirect">index</result>
-				<result name="error"  type="redirect">login</result>
-		</action>
+		
+		
+		
 		
 	</package>
 </struts>

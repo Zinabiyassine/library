@@ -1,6 +1,7 @@
 package org.sid.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class Adherent implements Serializable{
 	//private List<Reservation> reservation;
 	
 	@OneToMany
-	@JoinTable(name="favoris")
+	@JoinTable(name="favoris" )
 	private List<Livre> favoris;
 	//@OneToMany
 	//@Where(clause="dateRestitutionReel<>null")
@@ -72,9 +73,17 @@ public class Adherent implements Serializable{
 		this.finAbonnement = finAbonnement;
 		this.dateInscription=new Date();
 		this.statut=true;
-//		this.favoris=new ArrayList<Livre>();
+		this.favoris=new ArrayList<Livre>();
 //		this.historique=new ArrayList<Reservation>();
 		
+	}
+
+	public List<Livre> getFavoris() {
+		return favoris;
+	}
+
+	public void setFavoris(List<Livre> favoris) {
+		this.favoris = favoris;
 	}
 
 	public Adherent() {

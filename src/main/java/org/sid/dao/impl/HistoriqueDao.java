@@ -22,7 +22,11 @@ public class HistoriqueDao implements IHistoriqueDao {
 		Query query = em.createQuery("select l from Historique as l");
 		return(List<Historique>)query.getResultList();
 	}
-
+	@Transactional
+	public List<Historique> getall(long id) {
+		Query query = em.createQuery("select l from Historique as l where idadherent="+id);
+		return(List<Historique>)query.getResultList();
+	}
 	@Override
 	public void add(Historique h) {
 		em.persist(h);

@@ -6,7 +6,7 @@
 
 <div class="wrapper">
     <%@ include file="includes/slidebar.jsp" %>
-        <%@ include file="includes/body.jsp" %>
+    <%@ include file="includes/body.jsp" %>
     
 </div>
 
