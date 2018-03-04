@@ -7,7 +7,7 @@
 		<div class="col-md-4 authen">
 			<div class="search-box">
 				<div class="caption">
-					<h3>Autenetification</h3>
+					<h3>Authentification</h3>
 				</div>
 				<form action="login" method="post" class="loginForm">
 					<div class="input-group">
