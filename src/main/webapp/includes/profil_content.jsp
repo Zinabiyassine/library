@@ -86,15 +86,8 @@
 					</div>
 					<s:if test="%{#session['statut']==2}">
 						<div class="row">
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>Date de naissance</label> <input type="text"
-										class="form-control border-input" disabled name="naissance"
-										placeholder="date de naissance"
-										value="<s:property value='naissance'/>">
-								</div>
-							</div>
-							<div class="col-md-4">
+						
+							<div class="col-md-6">
 								<div class="form-group">
 									<label>Date d'inscription</label> <input type="text"
 										class="form-control border-input" disabled name="create"
@@ -102,7 +95,7 @@
 								</div>
 							</div>
 
-							<div class="col-md-4">
+							<div class="col-md-6">
 								<div class="form-group">
 									<label>Fin abonnement</label> <input type="text"
 										class="form-control border-input" disabled

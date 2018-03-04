@@ -201,7 +201,7 @@ public class HomeAction extends ActionSupport implements SessionAware {
 		this.finAbonnement=cal.getTime();
 //		call.setTime(this.naissance);
 //		this.naissance=call.getTime();
-		Adherent a = new Adherent(nom, prenom, adresse, email, password, sexe, telephone, naissance, finAbonnement);
+		Adherent a = new Adherent(nom, prenom, adresse, email, password, sexe, telephone, finAbonnement);
 		a.setDateInscription(create);
 		System.out.println(a);
 
@@ -343,7 +343,6 @@ public class HomeAction extends ActionSupport implements SessionAware {
 				this.nom=agent.getNom();	this.prenom=agent.getPrenom();
 				this.adresse=agent.getAdresse();	
 				this.telephone=agent.getTelephone();
-				this.naissance=agent.getDateNaissance();
 				this.password=agent.getMdp();
 				this.photo=agent.getPhoto();
 
@@ -353,7 +352,6 @@ public class HomeAction extends ActionSupport implements SessionAware {
 				this.nom=a.getNom();	this.prenom=a.getPrenom();
 				this.adresse=a.getAdresse();	
 				this.telephone=a.getTelephone();
-				this.naissance=a.getDateNaissance();
 				this.photo=a.getPhoto();
 				this.create=a.getDateInscription();
 				this.finAbonnement=a.getFinAbonnement();
@@ -373,7 +371,6 @@ public class HomeAction extends ActionSupport implements SessionAware {
 			if((int)session.get("statut")==1){
 				Agent a = iAgentMetier.getAgentById(id);
 				a.setAdresse(adresse);
-				a.setDateNaissance(naissance);
 				a.setEmail(email);
 				a.setMdp(password);
 				a.setNom(nom);

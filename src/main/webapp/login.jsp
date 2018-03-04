@@ -20,9 +20,7 @@
 					</div>
 				</form>
 			</div>
-		</div>
-				<div class="col-md-2 "></div>
-		
+		</div>		
 		<div class="col-md-6 register ">
 			<div class="search-box">
 				<div class="caption">
@@ -56,14 +54,9 @@
 
 					</div>
 					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Date de naissance</label> <input type="date" name="naissance"
-									class="form-control borders-input"  />
-							</div>
-						</div>
 						
-						<div class="col-md-6">
+						
+						<div class="col-md-12">
 							<div class="form-group">
 								<label>Adresse mail</label> <input type="email" name="email"
 									class="form-control border-input" placeholder="Dupond@exemple.fr ..." />

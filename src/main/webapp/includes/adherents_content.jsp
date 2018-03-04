@@ -14,7 +14,7 @@
 					</div>
 					<div class="col-md-2"></div>
 
-					<div class="col-md-4">
+					<!-- <div class="col-md-4">
 						<form>
 							<div class="form-group">
 								<input title="Chercher les reservations par adherent"
@@ -22,7 +22,7 @@
 									placeholder="Nom de l'adherent .." />
 							</div>
 						</form>
-					</div>
+					</div> -->
 
 
 				</div>
@@ -36,7 +36,6 @@
 							<tr>
 								<th scope="col">#</th>
 								<th scope="col">Nom-Prénom</th>
-								<th scope="col">Date de naissance</th>
 								<th scope="col">Date d'inscription</th>
 								<th scope="col">Identifiant</th>
 								<th scope="col">Date fin abonnement</th>
@@ -52,7 +51,6 @@
 									
 									</th>
 									<td><s:property value="nom" /> <s:property value="prenom" /></td>
-									<td><s:property value="dateNaissance" /></td>
 									<td><s:property value="dateInscription"/></td>
 									<td><s:property value="id"/></td>
 									<td><s:property value="finAbonnement"/></td>
@@ -137,14 +135,7 @@
 
 					</div>
 					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Date de naissance</label> <input required type="date" name="naissance"
-									class="form-control borders-input"  />
-							</div>
-						</div>
-						
-						<div class="col-md-6">
+						<div class="col-md-12">
 							<div class="form-group">
 								<label>Adresse mail</label> <input required type="email" name="email"
 									class="form-control border-input" placeholder="Dupond@exemple.fr ..." />

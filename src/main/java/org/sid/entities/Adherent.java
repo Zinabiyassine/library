@@ -28,7 +28,7 @@ public class Adherent implements Serializable{
 	@Column(unique=true)
 	private String email;
 	private String nom, prenom, adresse, mdp, sexe, telephone,photo;
-	private Date dateInscription, dateNaissance;
+	private Date dateInscription;
 	private boolean statut;
 	//@OneToMany(mappedBy = "adherent", cascade = CascadeType.ALL)
 	//private List<Reservation> reservation;
@@ -59,7 +59,7 @@ public class Adherent implements Serializable{
 	}
 
 	public Adherent(String nom, String prenom, String adresse, String email,
-			String mdp, String sexe, String telephone, Date dateNaissance,
+			String mdp, String sexe, String telephone,
 			Date finAbonnement) {
 		super();
 		this.nom = nom;
@@ -69,11 +69,12 @@ public class Adherent implements Serializable{
 		this.mdp = mdp;
 		this.sexe = sexe;
 		this.telephone = telephone;
-		this.dateNaissance = dateNaissance;
 		this.finAbonnement = finAbonnement;
 		this.dateInscription=new Date();
 		this.statut=true;
 		this.favoris=new ArrayList<Livre>();
+		this.photo = "assets/img/faces/abdo.png";
+
 //		this.historique=new ArrayList<Reservation>();
 		
 	}
@@ -156,13 +157,7 @@ public class Adherent implements Serializable{
 		this.dateInscription = dateInscription;
 	}
 
-	public Date getDateNaissance() {
-		return dateNaissance;
-	}
-
-	public void setDateNaissance(Date dateNaissance) {
-		this.dateNaissance = dateNaissance;
-	}
+	
 
 	public boolean isStatut() {
 		return statut;
@@ -193,7 +188,7 @@ public class Adherent implements Serializable{
 		return "Adherent [nom=" + nom + ", prenom=" + prenom + ", adresse="
 				+ adresse + ", email=" + email + ", mdp=" + mdp + ", sexe="
 				+ sexe + ", telephone=" + telephone + ", dateInscription="
-				+ dateInscription + ", dateNaissance=" + dateNaissance
+				+ dateInscription
 				+ ", statut=" + statut + ", finAbonnement=" + finAbonnement
 				+  "]";
 	}
