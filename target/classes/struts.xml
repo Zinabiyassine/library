@@ -7,7 +7,7 @@
 		
 		<action name="index" class="org.sid.web.HomeAction" method="index">
 			<result name="success">index.jsp</result>		
-			<result name="redirect" type="redirect">login.jsp</result>
+			<result name="*" type="redirect">login.jsp</result>
 		</action>
 		
 		<action name="login" class="org.sid.web.HomeAction" method="login">
@@ -87,26 +87,6 @@
 				<result name="success"  type="redirect">login</result>
 				<result name="*"  type="redirect">login</result>
 		</action>
-							<!-- 		update struts-->
-		
-		
-		
-		<action name="adherents" class="org.sid.web.AdherentAction"
-			method="adherents">
-			<result name="success">adherents.jsp</result>
-		</action>
-
-		<action name="profil" class="org.sid.web.HomeAction"
-			method="profil">
-			<result name="success">profil.jsp</result>
-		</action>
-		
-		<action name="retard" class="org.sid.web.HomeAction"
-			method="retard">
-			<result name="success">retard</result>
-		</action>
-		
-
 		<action name="deleteReservation" class="org.sid.web.HomeAction" method="deleteReservation">
 				<result name="success"  type="redirect">index</result>
 		</action>
@@ -114,6 +94,31 @@
 				<result name="success"  type="redirect">index</result>
 				<result name="error"  type="redirect">index</result>
 		</action>
+		
+		<action name="adherents" class="org.sid.web.HomeAction" method="adherents">
+				<result name="success" >adherents.jsp</result>
+				<result name="*"  type="redirect">index</result>
+		</action>
+		
+		<action name="deleteAdherent" class="org.sid.web.HomeAction" method="deleteAdherent">
+				<result name="success" type="redirect" >adherents</result>
+				<result name="*"  type="redirect">index</result>
+		</action>
+		
+							<!-- 		update struts-->
+		
+		
+		
+		
+		
+		<action name="retard" class="org.sid.web.HomeAction"
+			method="retard">
+			<result name="success">retard</result>
+		</action>
+		
+
+		
+		
 		
 		
 		

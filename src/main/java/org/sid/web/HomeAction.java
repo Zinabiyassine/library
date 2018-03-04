@@ -66,7 +66,7 @@ public class HomeAction extends ActionSupport implements SessionAware {
 	public String sexe;
 
 	// addreservation
-	public int codeadherent;
+	public long codeadherent;
 	public long isbn;
 	public int index;
 	// add Livre
@@ -110,10 +110,24 @@ public class HomeAction extends ActionSupport implements SessionAware {
 		session.put("name", t.getNom()+"."+t.getPrenom().toUpperCase().charAt(1));
 		session.put("path",t.getPhoto());
 		return SUCCESS;
-			}else{return "auth";}
+			}else return "auth";
 		}else{
-			return "auth";
-		}
+				Agent a=iAgentMetier.getAgentByEmail(email);
+				if(a!=null){
+					if(a.getEmail().equals(email)&&a.getMdp().equals(password)){
+						System.out.println(a);
+						session.put("id", a.getId());
+						session.put("email", email);
+						session.put("logged", true);
+						session.put("statut", 1);
+						session.put("index", "");
+						session.put("name", a.getNom()+"."+a.getPrenom().toUpperCase().charAt(1));
+						session.put("path",a.getPhoto());
+						return SUCCESS;
+					}else return "auth";
+				}else return "auth";
+			}
+	
 		}
 	}
 
@@ -181,7 +195,7 @@ public class HomeAction extends ActionSupport implements SessionAware {
 		Adherent a = new Adherent(email, nom, prenom, null, password, sexe,
 				telephone, photo, true);
 		a.setDateInscription(new java.util.Date());
-		if (iadherentMetier.getAdherentByEmail(email) == null) {
+		if (iadherentMetier.getAdherentByEmail(email) == null&&iAgentMetier.getAgentByEmail(email)==null) {
 			iadherentMetier.addAdherent(a);
 			return SUCCESS;
 		} else
@@ -310,12 +324,17 @@ public class HomeAction extends ActionSupport implements SessionAware {
 		if (session.containsKey("logged") && (boolean) session.get("logged")) {
 			this.pagetitle = "profil";
 			if((int)this.session.get("statut")==1){
+				System.out.println("id agent"+(long)this.session.get("id"));
 				Agent agent=iAgentMetier.getAgentById((long)this.session.get("id"));
-				this.sexe=agent.getSexe();	this.email=agent.getEmail();
+				this.sexe=agent.getSexe();	
+				this.email=agent.getEmail();
 				this.nom=agent.getNom();	this.prenom=agent.getPrenom();
 				this.adresse=agent.getAdresse();	
 				this.telephone=agent.getTelephone();
 				this.naissance=agent.getDateNaissance();
+				this.password=agent.getMdp();
+				this.photo=agent.getPhoto();
+
 			}else{
 				Adherent a= iadherentMetier.getAdherentById((long)this.session.get("id"));
 				this.sexe=a.getSexe();	this.email=a.getEmail();
@@ -326,10 +345,10 @@ public class HomeAction extends ActionSupport implements SessionAware {
 				this.photo=a.getPhoto();
 				this.create=a.getDateInscription();
 				this.finAbonnement=a.getFinAbonnement();
+				this.password=a.getMdp();
 				this.retard=iReservationMetier.getRetardByAdherent((long)this.session.get("id")).size();
 				this.reservations= iReservationMetier.getAll((long)this.session.get("id")).size();
 				this.history=ihistoryMetier.getall((long)this.session.get("id")).size();
-				
 			}
 			return SUCCESS;
 		}else
@@ -351,6 +370,9 @@ public class HomeAction extends ActionSupport implements SessionAware {
 				a.setTelephone(telephone);
 				session.put("name", a.getNom()+"."+a.getPrenom().toUpperCase().charAt(1));
 				iAgentMetier.updateAgent(a);
+				if(!photo.equals("")){
+					a.setPhoto(photo);
+				}
 			}else{
 				Adherent a = iadherentMetier.getAdherentById(id);
 				a.setAdresse(adresse);
@@ -361,6 +383,9 @@ public class HomeAction extends ActionSupport implements SessionAware {
 				session.put("name", a.getNom()+"."+a.getPrenom().toUpperCase().charAt(1));
 				session.put("path",a.getPhoto());
 				iadherentMetier.updateAdherent(a);
+				if(!photo.equals("")){
+					a.setPhoto(photo);
+				}
 			}
 			return SUCCESS;
 		}else
@@ -370,6 +395,34 @@ public class HomeAction extends ActionSupport implements SessionAware {
 	public String logout() {
 		this.session.clear();
 		return SUCCESS;
+	}
+	
+	public String adherents(){
+		if (session.containsKey("logged") && (boolean) session.get("logged")&&(int)session.get("statut")==1){
+				this.allAdherent = iadherentMetier.getAll();
+				this.pagetitle="adherents";
+				return SUCCESS;
+			}else{
+				return "auth";
+			}
+		
+	}
+	
+	public String deleteAdherent(){
+		if (session.containsKey("logged") && (boolean) session.get("logged")&&(int)session.get("statut")==1){
+			try{
+			this.iadherentMetier.deleteAdherent(this.codeadherent);
+			}catch(Exception e){
+				System.out.println(e);
+			}
+			if(this.iadherentMetier.getAdherentById(this.codeadherent)==null){
+				return "error";
+			}
+			else{
+				return SUCCESS;
+			}
+		}
+		return "auth";
 	}
 
 	// SESSION

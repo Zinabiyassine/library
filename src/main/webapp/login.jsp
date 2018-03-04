@@ -12,19 +12,21 @@
 				<form action="login" method="post" class="loginForm">
 					<div class="input-group">
 						<input type="text" id="mail" name="email" class="form-control"
-							placeholder="email ..."> <input type="password" id="paw"
+							placeholder="email ..."> 
+							<input type="password" 
 							name="password" class="form-control" placeholder="mot de passe ...">
-						<input type="submit" id="submitValid" disabled
-							class="form-control" value="Valider">
+						<button type="submit"  class="btn btn-primary  	btn-large btn-fill">Se connecter</button>
+						
 					</div>
 				</form>
 			</div>
 		</div>
+				<div class="col-md-2 "></div>
 		
 		<div class="col-md-6 register ">
 			<div class="search-box">
 				<div class="caption">
-					<h3>Inscription</h3>
+					<h3>Inscription (Adherent)</h3>
 				</div>
 				<form action="addAdherent" method="post" class="loginForm">
 					<div class="row">
@@ -32,9 +34,8 @@
 							<div class="form-group">
 								<label>Civilité</label> <select class="form-control"
 									name ="sexe" id="exampleFormControlSelect1">
-									<option></option>
-									<option>F</option>
-									<option>H</option>
+									<option>Mme.</option>
+									<option>M.</option>
 								</select>
 							</div>
 						</div>
@@ -74,14 +75,14 @@
 					<div class="row">
 					<div class="col-md-6">
 							<div class="form-group">
-								<label>Mot de passe</label> <input type="password" name="password" id="pwd1"
+								<label>Mot de passe</label> <input type="password" name="password" id="pwd"
 									class="form-control border-input" placeholder="mot de passe" />
 							</div>
 						</div>
 						
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Confirmation</label> <input type="password" name="password1" id="pwd2"
+								<label>Confirmation</label> <input type="password" name="password1" id="pwd"
 									class="form-control border-input" placeholder=" Confirmation mot de passe" />
 							</div>
 						</div>
@@ -98,14 +99,13 @@
 						
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Photo</label> <input type="file" name="photo" 
-									 placeholder="" />
-								<small>Taille max : 1 Mo</small>
+								<label>Adresse</label> <input type="text" name="adresse" 
+									class="form-control border-input" placeholder="Paris " />
 							</div>
 						</div>
 					</div>
 					
-					  <button type="submit" class="btn btn-primary  btn-fill">Valider</button>
+					  <button type="submit" id="submitValid"  disabled class="btn btn-primary  btn-fill">Valider</button>
 					
 				</form>
 			</div>

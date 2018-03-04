@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
-	$('input[type=password]').keyup(function() {
+	$('#pwd').keyup(function() {
 		var pswd = $(this).val();
 		var valid1=true;
 		var valid2=true;

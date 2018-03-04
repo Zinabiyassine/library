@@ -54,7 +54,7 @@ public class Adherent implements Serializable{
 		this.mdp = mdp;
 		this.sexe = sexe;
 		this.telephone = telephone;
-		this.photo = photo;
+		this.photo = "assets/img/faces/abdo.png";
 		this.statut=statut;
 	}
 

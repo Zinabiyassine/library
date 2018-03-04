@@ -19,7 +19,7 @@
   
    <!-- How long the sessions will stick around for -->
   <session-config>
-    <session-timeout>600</session-timeout> <!-- 600seconds = 10 mins -->
+    <session-timeout>60</session-timeout> <!-- 600seconds = 10 mins -->
   </session-config>
   
   

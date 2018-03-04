@@ -12,7 +12,16 @@ public class Agent {
 	private long id;
 	private String nom, prenom, adresse, email, mdp, sexe, telephone;
 	private Date dateNaissance;
+	private String photo;
 	
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
 	public Agent() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -29,6 +38,11 @@ public class Agent {
 		this.sexe = sexe;
 		this.telephone = telephone;
 		this.dateNaissance = dateNaissance;
+		this.photo="assets/img/faces/abdo.png";
+	}
+
+	public long getId() {
+		return id;
 	}
 
 	public String getNom() {

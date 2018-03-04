@@ -38,7 +38,7 @@
 								<th scope="col">Nom-Prénom</th>
 								<th scope="col">Date de naissance</th>
 								<th scope="col">Date d'inscription</th>
-								<th scope="col">Statut</th>
+								<th scope="col">Identifiant</th>
 								<th scope="col">Date fin abonnement</th>
 								<th scope="col">Actions</th>
 							</tr>
@@ -47,11 +47,14 @@
 							<s:iterator value="allAdherent">
 
 								<tr>
-									<th scope="row"><s:property value="id" /></th>
+									<th style="width: 5%">
+										<img style="max-width: 147%;border-radius: 50%;" src="<s:property value="photo" />">	
+									
+									</th>
 									<td><s:property value="nom" /> <s:property value="prenom" /></td>
 									<td><s:property value="dateNaissance" /></td>
 									<td><s:property value="dateInscription"/></td>
-									<td><s:property value="statut"/></td>
+									<td><s:property value="id"/></td>
 									<td><s:property value="finAbonnement"/></td>
 
 									<s:url namespace="/" action="addReservationbyadherent" var="trash">
@@ -68,8 +71,15 @@
                                   data-toggle="dropdown">Action
                                   </button>
                                   <ul class="dropdown-menu">
-                                      <li><a href="#"><i class="ti-trash"></i>  Supprimer</a></li>
-                                      <li><a href="#"><i class="ti-pencil"></i> Editer</a></li>
+                                  <s:url namespace="/" action="deleteAdherent"
+										var="delete">
+
+										<s:param name="codeadherent">
+											<s:property value="id" />
+										</s:param>
+
+									</s:url>
+                                      <li><s:a href="%{delete}"><i class="ti-trash"></i>Supprimer</s:a></li>
                                     
                                   </ul>
                                 </div>
@@ -95,19 +105,94 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Inscription</h4>
       </div>
       <div class="modal-body">
-        <p>dir li bghitti hnna</p>
-       
-						
-						
-						
+			<form action="addAdherent" method="post" class="loginForm">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="form-group">
+								<label>Civilité</label> <select required class="form-control"
+									name ="sexe" id="exampleFormControlSelect1">
+									<option></option>
+									<option>F</option>
+									<option>H</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-5">
+							<div class="form-group">
+								<label>Nom</label> <input required type="text" name="nom"
+									class="form-control border-input" placeholder="Dupond" />
+							</div>
 
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Prénom</label> <input required type="text" name="prenom"
+									class="form-control border-input" placeholder="Dupond" />
+							</div>
+						</div>
+
+
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Date de naissance</label> <input required type="date" name="naissance"
+									class="form-control borders-input"  />
+							</div>
+						</div>
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Adresse mail</label> <input required type="email" name="email"
+									class="form-control border-input" placeholder="Dupond@exemple.fr ..." />
+							</div>
+						</div>
+
+					</div>
+					
+					<div class="row">
+					<div class="col-md-6">
+							<div class="form-group">
+								<label>Mot de passe</label> <input required type="password" name="password" id="pwd1"
+									class="form-control border-input" placeholder="mot de passe" />
+							</div>
+						</div>
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Confirmation</label> <input  required type="password" name="password1" id="pwd2"
+									class="form-control border-input" placeholder=" Confirmation mot de passe" />
+							</div>
+						</div>
+					
+					</div>
+					
+					<div class="row">
+					<div class="col-md-6">
+							<div class="form-group">
+								<label>Telephone</label> <input required type="text" name="telephone" 
+									class="form-control border-input" placeholder="0769800941 " />
+							</div>
+						</div>
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Photo</label> <input type="file" name="photo" 
+									 placeholder="" />
+								<small>Taille max : 1 Mo</small>
+							</div>
+						</div>
+					</div>
+					 <div class="modal-footer">
+					  <button type="submit" class="btn btn-primary  btn-fill">Valider</button>
+     				 </div>
+					
+				</form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+     
     </div>
 
   </div>
