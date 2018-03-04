@@ -104,6 +104,10 @@
 				<result name="success" type="redirect" >adherents</result>
 				<result name="*"  type="redirect">index</result>
 		</action>
+		<action name="retard" class="org.sid.web.HomeAction"
+			method="retard">
+			<result name="success">retard</result>
+		</action>
 		
 							<!-- 		update struts-->
 		
@@ -111,10 +115,7 @@
 		
 		
 		
-		<action name="retard" class="org.sid.web.HomeAction"
-			method="retard">
-			<result name="success">retard</result>
-		</action>
+		
 		
 
 		

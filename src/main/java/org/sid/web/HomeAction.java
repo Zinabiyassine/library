@@ -192,11 +192,23 @@ public class HomeAction extends ActionSupport implements SessionAware {
 	}
 
 	public String addAdherent() {
-		Adherent a = new Adherent(email, nom, prenom, null, password, sexe,
-				telephone, photo, true);
-		a.setDateInscription(new java.util.Date());
+		Calendar cal = Calendar.getInstance();
+		Calendar call = Calendar.getInstance();
+
+		cal.setTime(new Date());
+		this.create=cal.getTime();
+		cal.add(Calendar.DATE, 365);
+		this.finAbonnement=cal.getTime();
+//		call.setTime(this.naissance);
+//		this.naissance=call.getTime();
+		Adherent a = new Adherent(nom, prenom, adresse, email, password, sexe, telephone, naissance, finAbonnement);
+		a.setDateInscription(create);
+		System.out.println(a);
+
 		if (iadherentMetier.getAdherentByEmail(email) == null&&iAgentMetier.getAgentByEmail(email)==null) {
 			iadherentMetier.addAdherent(a);
+			System.out.println("inscription");
+
 			return SUCCESS;
 		} else
 			return ERROR;

@@ -55,7 +55,7 @@ public class Adherent implements Serializable{
 		this.sexe = sexe;
 		this.telephone = telephone;
 		this.photo = "assets/img/faces/abdo.png";
-		this.statut=statut;
+		this.statut=true;
 	}
 
 	public Adherent(String nom, String prenom, String adresse, String email,

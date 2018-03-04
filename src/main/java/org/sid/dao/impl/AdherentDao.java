@@ -22,7 +22,7 @@ public class AdherentDao implements IAdherentDao {
 	
 	@Transactional
 	public Adherent addAdherent(Adherent obj) {
-		if(!NotExiste(obj.getEmail())){
+		if(NotExiste(obj.getEmail())){
 			em.persist(obj);
 			return this.getAdherentByEmail(obj.getEmail());
 		}
@@ -57,9 +57,7 @@ public class AdherentDao implements IAdherentDao {
 	try {
 		Query q = em.createQuery("select a from Adherent a where a.email=:x");
 		q.setParameter("x", idObj);
-		Adherent a = (Adherent) q.getSingleResult();
-		
-			return a;
+		return (Adherent) q.getSingleResult();
 		}
 	catch (NoResultException nre){
 		return null;
